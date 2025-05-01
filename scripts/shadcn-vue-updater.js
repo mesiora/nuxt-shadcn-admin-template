@@ -10,14 +10,14 @@ const __dirname = path.dirname(__filename)
 
 // Configuration
 const config = {
-  directoryPath: path.join(__dirname, '../components/ui'),
+  directoryPath: path.join(__dirname, '../app/components/ui'),
   command: 'npx shadcn-vue@latest add',
   options: '--overwrite',
   concurrentLimit: 3, // Number of concurrent updates
 }
 
 // Helper to sleep between retries
-const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 // Execute command with retries
 async function executeWithRetry(command, maxRetries = 3, delayMs = 1000) {
@@ -35,7 +35,7 @@ async function executeWithRetry(command, maxRetries = 3, delayMs = 1000) {
       console.error(`Attempt ${attempt}/${maxRetries} failed:`, error.message)
 
       if (attempt < maxRetries) {
-        console.log(`Retrying in ${delayMs/1000} seconds...`)
+        console.log(`Retrying in ${delayMs / 1000} seconds...`)
         await sleep(delayMs)
       }
     }
@@ -60,7 +60,7 @@ async function processBatch(components, startIndex, batchSize) {
         console.error(`✗ Failed to update ${component}:`, error.message)
         return { component, success: false, error: error.message }
       }
-    })
+    }),
   )
 
   return results
@@ -76,19 +76,23 @@ async function updateComponents() {
     // Process all components in batches
     const results = {
       successful: [],
-      failed: []
+      failed: [],
     }
 
     for (let i = 0; i < components.length; i += config.concurrentLimit) {
-      const batchResults = await processBatch(components, i, config.concurrentLimit)
+      const batchResults = await processBatch(
+        components,
+        i,
+        config.concurrentLimit,
+      )
 
-      batchResults.forEach(result => {
+      batchResults.forEach((result) => {
         if (result.value.success) {
           results.successful.push(result.value.component)
         } else {
           results.failed.push({
             component: result.value.component,
-            error: result.value.error
+            error: result.value.error,
           })
         }
       })
@@ -107,7 +111,6 @@ async function updateComponents() {
         console.log(`- ${component}: ${error}`)
       })
     }
-
   } catch (error) {
     console.error('Fatal error:', error.message)
     process.exit(1)

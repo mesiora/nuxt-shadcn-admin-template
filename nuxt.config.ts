@@ -1,6 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
+  future: {
+    compatibilityVersion: 4,
+  },
   devtools: { enabled: true },
   app: {
     head: {
@@ -9,18 +12,13 @@ export default defineNuxtConfig({
     },
   },
   modules: [
+    'shadcn-nuxt',
+    '@pinia/nuxt',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@nuxt/icon',
-    'shadcn-nuxt',
-    '@pinia/nuxt',
     '@nuxt/eslint',
   ],
-  // components: [
-  //   {
-  //     path: '~/components/app',
-  //   },
-  // ],
   shadcn: {
     /**
      * Prefix for all the imported component
@@ -30,6 +28,6 @@ export default defineNuxtConfig({
      * Directory that the component lives in.
      * @default "./components/ui"
      */
-    componentDir: './components/ui',
+    componentDir: './app/components/ui',
   },
 })

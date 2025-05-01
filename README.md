@@ -1,8 +1,8 @@
 ![Preview](./assets/images/preview.png)
 
-# Nuxt 3 Admin Template
+# Nuxt Shadcn Admin Template
 
-Welcome to the **Nuxt 3 Admin Template Starter**, an advanced and modern admin dashboard built using [Nuxt 3](https://nuxt.com/) and the [shadcn-vue](https://www.shadcn-vue.com/). This project serves as a solid foundation for creating scalable, feature-rich admin panels.
+Welcome to the **Nuxt Shadcn Admin Template**, an admin dashboard built using [Nuxt](https://nuxt.com/) and the [shadcn-vue](https://www.shadcn-vue.com/).
 
 > 🚧 **Note**: This template is currently under development and is not yet complete. Expect frequent updates and potential breaking changes.
 
