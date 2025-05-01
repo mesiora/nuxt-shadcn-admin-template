@@ -1,4 +1,4 @@
-![Preview](./assets/images/preview.png)
+![Preview](./app/assets/images/preview.png)
 
 # Nuxt Shadcn Admin Template
 
